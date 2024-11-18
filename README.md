@@ -77,7 +77,7 @@ http://localhost:8080
     "email": "john@gmail.com",
     "phone": "7097691056",
     "start_date": "2024-10-11"
-}
+   }
   ```
 
 - **PUT** `/members/{id}`  
