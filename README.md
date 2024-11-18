@@ -90,7 +90,7 @@ http://localhost:8080
     "email": "john@gmail.com",
     "phone": "7097691056",
     "start_date": "2024-10-11"
-}
+   }
   ```
 
 - **DELETE** `/members/{id}`  
@@ -128,7 +128,7 @@ http://localhost:8080
     "prize": "750.00",
     "entry_fee": "75.00",
     "members": [1, 3]
-}
+   }
   ```
 
 - **PUT** `/tournaments/{id}`  
@@ -142,7 +142,7 @@ http://localhost:8080
     "prize": "750.00",
     "entry_fee": "75.00",
     "members": [1, 3]
-}
+   }
   ```
 
 - **DELETE** `/tournaments/{id}`  
