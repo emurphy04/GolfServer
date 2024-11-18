@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @RestController
 public class TournamentController {
@@ -26,6 +27,11 @@ public class TournamentController {
     @GetMapping("/tournaments")
     public List<Tournament> getAllTournaments(){
         return tournamentService.getTournaments();
+    }
+
+    @GetMapping("/tournaments/{id}")
+    public Optional<Tournament> getTournamentById(@PathVariable int id){
+        return tournamentService.findTournamentById(id);
     }
 
     @SuppressWarnings("unchecked")
@@ -53,19 +59,19 @@ public class TournamentController {
 
     @SuppressWarnings("unchecked")
     @PutMapping("/tournaments/{id}")
-    public void updateTournament(@PathVariable int id, @RequestBody Map<String, String> body, @RequestBody Map<String, Object> tournamentMembers){
+    public void updateTournament(@PathVariable int id, @RequestBody Map<String, Object> body){
         Tournament currentTournament = tournamentService.findTournamentById(id).get();
-        List<Integer> member_ids = (List<Integer>) tournamentMembers.get("members");
+        List<Integer> member_ids = (List<Integer>) body.get("members");
         List<Member> members = new ArrayList<>();
         for (Integer memberId : member_ids) {
             members.add(memberService.findMemberById(memberId).get());
         }
         currentTournament.setMembers(members);
-        currentTournament.setEnd_date(body.get("end_date"));
-        currentTournament.setLocation(body.get("location"));
-        currentTournament.setPrize(Double.parseDouble(body.get("prize")));
-        currentTournament.setEntry_fee(Double.parseDouble(body.get("entry_fee")));
-        currentTournament.setStart_date(body.get("start_date"));
+        currentTournament.setEnd_date((String) body.get("end_date"));
+        currentTournament.setLocation((String) body.get("location"));
+        currentTournament.setPrize(Double.parseDouble((String) body.get("prize")));
+        currentTournament.setEntry_fee(Double.parseDouble((String) body.get("entry_fee")));
+        currentTournament.setStart_date((String) body.get("start_date"));
         tournamentService.addTournament(currentTournament);
     }
 }
