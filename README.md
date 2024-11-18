@@ -19,8 +19,7 @@ Follow these steps to set up and run the API on your local machine:
 
 ### 1. Clone the Repository
 ```bash
-git clone <repository-url>
-cd <repository-folder>
+git clone [<repository-url>](https://github.com/emurphy04/GolfServer.git)
 ```
 
 ### 2. Set Up MySQL Database
