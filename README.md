@@ -173,4 +173,22 @@ http://localhost:8080/tournaments
 
 ---
 
+## API Testing
+
+The API has been tested using Postman. Below are screenshots showcasing the API's functionality:
+
+### Testing GET with dates
+![Retrieve via Date](testing-screenshots/date-testing.png)
+
+### Testing GET with location
+![Retrieve via Location](testing-screenshots/location-testing.png)
+
+### Testing GET with Member ID
+![Retrieve Member With ID](testing-screenshots/members-id-testing.png)
+
+### Testing POST to Members
+![Add Member](testing-screenshots/members-post-testing.png)
+
+---
+
 Feel free to contribute, report issues, or enhance the API further. Happy golfing! ⛳
