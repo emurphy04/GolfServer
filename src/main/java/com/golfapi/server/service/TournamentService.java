@@ -34,4 +34,25 @@ public class TournamentService {
     public void deleteTournament(int id){
         tournamentRepo.deleteById(id);
     }
+
+    public Optional<Tournament> getTournamentByLocation(String location) {
+        List<Tournament> tournaments = tournamentRepo.findAll();
+        String location_parsed = location.replace("-", " ");
+        for (Tournament tournament : tournaments) {
+            if (tournament.getLocation().equalsIgnoreCase(location_parsed)){
+                return Optional.of(tournament);
+            }
+        }
+        return Optional.empty();
+    }
+
+    public Optional<Tournament> getTournamentByDate(String date) {
+        List<Tournament> tournaments = tournamentRepo.findAll();
+        for (Tournament tournament : tournaments) {
+            if (tournament.getStart_date().equals(date)){
+                return Optional.of(tournament);
+            }
+        }
+        return Optional.empty();
+    }
 }

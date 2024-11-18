@@ -7,6 +7,7 @@ import com.golfapi.server.service.TournamentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.swing.text.html.Option;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -32,6 +33,16 @@ public class TournamentController {
     @GetMapping("/tournaments/{id}")
     public Optional<Tournament> getTournamentById(@PathVariable int id){
         return tournamentService.findTournamentById(id);
+    }
+
+    @GetMapping("/tournaments/location/{location}")
+    public Optional<Tournament> getTournamentByLocation(@PathVariable String location){
+        return tournamentService.getTournamentByLocation(location);
+    }
+
+    @GetMapping("/tournaments/date/{date}")
+    public Optional<Tournament> getTournamentByDate(@PathVariable String date){
+        return tournamentService.getTournamentByDate(date);
     }
 
     @SuppressWarnings("unchecked")

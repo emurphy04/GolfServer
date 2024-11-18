@@ -3,6 +3,8 @@ package com.golfapi.server.model;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.time.Period;
+import java.time.temporal.ChronoUnit;
 
 @Entity
 @Table(name = "members")
@@ -17,6 +19,9 @@ public class Member {
     private String phone;
     private String start_date;
 
+    @Transient
+    private Long membership_duration;
+
     public Member() {
     }
 
@@ -27,6 +32,50 @@ public class Member {
         this.email = email;
         this.phone = phone;
         this.start_date = start_date;
+    }
+
+    public String getMembership_duration() {
+        if (start_date == null) {
+            return "Unknown duration";
+        }
+
+        LocalDate now = LocalDate.now();
+        Period period = Period.between(LocalDate.parse(start_date), now);
+
+        int years = period.getYears();
+        int months = period.getMonths();
+        int days = period.getDays();
+
+        StringBuilder duration = new StringBuilder();
+
+        if (years > 0) {
+            duration.append(years).append(" year");
+            if (years > 1) {
+                duration.append("s");
+            }
+        }
+
+        if (months > 0) {
+            if (duration.length() > 0) {
+                duration.append(", ");
+            }
+            duration.append(months).append(" month");
+            if (months > 1) {
+                duration.append("s");
+            }
+        }
+
+        if (days > 0) {
+            if (duration.length() > 0) {
+                duration.append(", ");
+            }
+            duration.append(days).append(" day");
+            if (days > 1) {
+                duration.append("s");
+            }
+        }
+
+        return duration.toString();
     }
 
     public Integer getMember_id() {

@@ -25,6 +25,16 @@ public class MemberService {
         return memberRepo.findAll();
     }
 
+    public Member getByPhone(String phone){
+        List<Member> members = memberRepo.findAll();
+        for (Member member : members) {
+            if (member.getPhone().equals(phone)) {
+                return member;
+            }
+        }
+        return null;
+    }
+
     public Optional<Member> findMemberById(int id){
         return memberRepo.findById(id);
     }

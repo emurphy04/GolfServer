@@ -2,16 +2,32 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.3.5'
 	id 'io.spring.dependency-management' version '1.1.6'
+	id 'application'
 }
 
 group = 'com.golfapi'
 version = '0.0.1-SNAPSHOT'
+
+bootRun {
+	ignoreExitValue = true
+}
+
+jar {
+	// Enable building of a fat JAR
+	enabled = true
+	archiveFileName = "app.jar"
+}
 
 java {
 	toolchain {
 		languageVersion = JavaLanguageVersion.of(17)
 	}
 }
+
+application {
+	mainClass = 'com.golfapi.server.ServerApplication'
+}
+
 
 repositories {
 	mavenCentral()
@@ -25,6 +41,3 @@ dependencies {
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
-tasks.named('test') {
-	useJUnitPlatform()
-}
