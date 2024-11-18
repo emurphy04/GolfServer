@@ -106,7 +106,7 @@ http://localhost:8080
   Retrieve tournaments at a specific location.  
   _Example:_  
   ```
-  http://localhost:8080/tournaments/location/st-johns-golf-club
+  http://localhost:8080/tournaments/location/st.-john's-golf-club
   ```
 
 - **GET** `/tournaments/date/{date}`  
